@@ -12,3 +12,12 @@ However, it is distributed as a .deb package that is generated with a Makefile. 
 ```console
 $ make
 ```
+
+# Installation
+Installing the .deb package is pretty straightforward:
+
+```console
+# dpkg -i eventrun_1.0-1.deb
+```
+
+If dpkg complains about missing dependencies, make sure you install them first.
