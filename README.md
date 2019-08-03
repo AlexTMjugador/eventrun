@@ -14,7 +14,7 @@ $ make
 ```
 
 # Installation
-Installing the .deb package is pretty straightforward:
+You can get the official .deb package from the [releases page](https://github.com/AlexTMjugador/eventrun/releases). Installing the package is pretty straightforward:
 
 ```console
 # dpkg -i eventrun_1.0-1.deb
