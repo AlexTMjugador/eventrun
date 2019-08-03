@@ -7,22 +7,21 @@ Files: *
 Copyright: 2019 Alejandro González <alejandro.gonzalez.correo@gmail.com>
 License: GPL-3+
 
-18 License: GPL-3+
-19  This program is free software; you can redistribute it and/or modify
-20  it under the terms of the GNU General Public License as published by
-21  the Free Software Foundation; either version 3 of the License, or
-22  (at your option) any later version. 
-23  .
-24  This program is distributed in the hope that it will be useful,
-25  but WITHOUT ANY WARRANTY; without even the implied warranty of
-26  MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the
-27  GNU General Public License for more details.
-28  .
-29  You should have received a copy of the GNU General Public License along
-30  with this program; if not, write to the Free Software Foundation, Inc.,
-31  51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
-32  .
-33  On Debian systems, the full text of the GNU General Public
-34  License version 3 can be found in the file
-35  '/usr/share/common-licenses/GPL-3'.
-
+License: GPL-3+
+ This program is free software; you can redistribute it and/or modify
+ it under the terms of the GNU General Public License as published by
+ the Free Software Foundation; either version 3 of the License, or
+ (at your option) any later version. 
+ .
+ This program is distributed in the hope that it will be useful,
+ but WITHOUT ANY WARRANTY; without even the implied warranty of
+ MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the
+ GNU General Public License for more details.
+ .
+ You should have received a copy of the GNU General Public License along
+ with this program; if not, write to the Free Software Foundation, Inc.,
+ 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
+ .
+ On Debian systems, the full text of the GNU General Public
+ License version 3 can be found in the file
+ '/usr/share/common-licenses/GPL-3'.
