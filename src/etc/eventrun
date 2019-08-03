@@ -1,0 +1,25 @@
+# The named pipe file to create for internal use of eventrun.
+# It's recommended to make it point to a RAM-based filesystem.
+FIFO=/run/inputrun
+
+# The device to capture events from.
+DEVICE=/dev/input/event5
+
+# The event type to react to.
+# It can be an extended regular expression, as used with sed -E.
+# Use evtest to get and analyze event code names.
+EVENT_TYPE=EV_KEY
+
+# The event code name that will trigger the execution of the specified command.
+# It can be an extended regular expression, as used with sed -E.
+# Use evtest to get and analyze event code names.
+EVENT_CODE=KEY_PROG1
+
+# The event value that will trigger the execution of the specified command.
+# It can be an extended regular expression, as used with sed -E.
+# Use evtest to get and analyze event values.
+EVENT_VALUE=1
+
+# The command to run with /bin/sh -c when the event happens.
+# It should be a single string, quoted if passing arguments to a command.
+COMMAND='/usr/bin/ttyrun -c startx'

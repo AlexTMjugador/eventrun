@@ -1,0 +1,33 @@
+#!/bin/sh
+
+. /etc/eventrun
+
+# Check that necessary variables are defined
+if [ -z "$FIFO" -o -z "$DEVICE" -o -z "$COMMAND" -o -z "$EVENT_TYPE" -o -z "$EVENT_CODE" -o -z "$EVENT_VALUE" ]; then
+	echo "Missing named pipe name, input event device or command to execute" >&2
+	exit 1
+fi
+
+# Kill child process on SIGTERM, and exit successfully
+handleSigterm() {
+	[ -n "$pid" ] && kill -TERM $pid >/dev/null 2>&1
+	rm "$FIFO" 2>/dev/null
+	exit 0
+}
+
+trap handleSigterm TERM
+
+# Create named pipe for communication with evtest
+if [ -p "$FIFO" ] || mkfifo -m 600 "$FIFO" 2>/dev/null; then
+	evtest "$DEVICE" > "$FIFO" 2>/dev/null &
+	pid=$!
+	sed -Enu "/^Event: time .*, type [0-9]* \\($EVENT_TYPE\\), code [0-9]* \\($EVENT_CODE\\), value $EVENT_VALUE\$/c\\
+" < "$FIFO" | xargs -d'\n' -n1 /bin/sh -c "$COMMAND" &
+
+	# Wait for children to be killed
+	wait $pid
+	rm "$FIFO" 2>/dev/null
+else
+	# Couldn't create the named pipe for some reason
+	exit 2
+fi

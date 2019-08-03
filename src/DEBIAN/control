@@ -1,0 +1,15 @@
+Package: eventrun
+Version: 1.0-1
+Section: utils
+Priority: optional
+Architecture: all
+Depends: evtest, coreutils
+Maintainer: Alejandro González <alejandro.gonzalez.correo@gmail.com>
+Homepage: https://github.com/AlexTMjugador/eventrun
+Description: eventrun
+ Runs a command when a Linux input device sends an event, no matter if X runs. Both input
+ device and event are configurable in /etc/eventrun. Each eventrun
+ instance can react on several input events on the same input device, if
+ the configuration file is modified accordingly.
+ Additionally, a SystemV-style service is installed in /etc/init.d, which allows to
+ run this program daemonized on system start after executing update-rc.d.

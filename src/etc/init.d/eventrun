@@ -1,0 +1,43 @@
+#!/bin/sh
+# Starts the eventrun daemon, which runs a command when an input event happens.
+#
+### BEGIN INIT INFO
+# Provides:          eventrun
+# Required-Start:    $network $remote_fs $syslog
+# Required-Stop:     
+# Default-Start:     2 3 4 5
+# Default-Stop:      0 6
+# Short-Description: Starts the eventrun daemon
+# Description:       Starts the eventrun daemon, which runs a command when an input event happens.
+### END INIT INFO
+
+PATH=/bin:/usr/bin:/sbin:/usr/sbin
+NAME=eventrun
+SCRIPT=/usr/bin/$NAME
+PIDFILE=/var/run/$NAME.pid
+
+. /lib/lsb/init-functions
+
+case "$1" in
+start)	log_begin_msg "Starting eventrun daemon"
+	start-stop-daemon --oknodo --start --background --pidfile $PIDFILE --make-pidfile --exec $SCRIPT
+	log_end_msg $?
+	;;
+stop)	log_begin_msg "Stopping eventrun daemon"
+	start-stop-daemon --oknodo --stop --retry 3 --pidfile $PIDFILE --remove-pidfile >/dev/null 2>&1
+	log_end_msg $?
+        ;;
+restart|reload|force-reload)
+	log_begin_msg "Restarting eventrun daemon"
+	start-stop-daemon --oknodo --stop --retry 3 --pidfile $PIDFILE --remove-pidfile >/dev/null 2>&1 && start-stop-daemon --oknodo --start --background --pidfile $PIDFILE --make-pidfile --exec $SCRIPT
+	log_end_msg $?
+	;;
+status)
+	status_of_proc -p $PIDFILE $SCRIPT $NAME
+	exit $?
+        ;;
+*)	log_action_msg "Syntax: /etc/init.d/$NAME {start|stop|restart|reload|force-reload|status}"
+        exit 2
+        ;;
+esac
+exit 0
